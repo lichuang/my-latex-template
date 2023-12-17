@@ -297,6 +297,9 @@
 %% 换用 \VerbatimEnvironment \begin{Verbatim}
 \RequirePackage{fancyvrb}
 
+%% 性质
+\newenvironment{property}{\par\noindent\textbf{\propertyname}\:}{\par}
+
 %% 命令行
 \newenvironment{shellBox}
 {%
@@ -496,7 +499,7 @@
 \renewcommand{\tablename}{表}
 \renewcommand{\lstlistingname}{CODE}
 \renewcommand{\abstractname}{摘要}
-
+\newcommand{\propertyname}{性质}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% global settings
