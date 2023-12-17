@@ -500,6 +500,12 @@
 \renewcommand{\lstlistingname}{CODE}
 \renewcommand{\abstractname}{摘要}
 \newcommand{\propertyname}{性质}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% global settings
