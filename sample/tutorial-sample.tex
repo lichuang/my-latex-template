@@ -1,0 +1,122 @@
+%!TEX program = xelatex
+
+\documentclass[lang=cn,newtx,10pt,scheme=chinese]{codedump}
+
+\title{\bfseries\sffamily
+  Sample: Angular 6 快速入门\\
+  \normalfont\zihao{-3}
+  One framework. Mobile \& desktop.
+}
+\author{WisdomFusion \\ \faGithubAlt~ https://github.com/WisdomFusion}
+\date{}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section{什么是 Angular？}
+\label{newfeatures}
+
+Angular 是一个开发平台。它能帮你更轻松的构建 Web 应用。Angular 集声明式模板、依赖注入、端到端工具和一些最佳实践于一身，为你解决开发方面的各种挑战。Angular 为开发者提升构建 Web、手机或桌面应用的能力。
+
+\section{架构概览}
+
+Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。Angular 本身使用 TypeScript 写成的。它将核心功能和可选功能作为一组 TypeScript 库进行实现，你可以把它们导入你的应用中。
+
+Angular 的基本构造块是 NgModule，它为组件提供了编译的上下文环境。 NgModule 会把相关的代码收集到一些功能集中。Angular 应用就是由一组 \verb|NgModule| 定义出的。 应用至少会有一个用于引导应用的根模块，通常还会有很多特性模块。
+
+\begin{itemize}
+  \item 组件定义\textbf{视图}。视图是一组可见的屏幕元素，Angular 可以根据你的程序逻辑和数据来选择和修改它们。 每个应用都至少有一个根组件。
+  
+  \item 组件使用\textbf{服务}。服务会提供那些与视图不直接相关的功能。服务提供商可以作为依赖被注入到组件中， 这能让你的代码更加模块化、可复用，而且高效。
+\end{itemize}
+
+\section{\ttfamily @NgModule \sffamily{元数据}}
+
+\verb|NgModule| 是一个带有 \verb|@NgModule| 装饰器的类。\verb|@NgModule| 装饰器是一个函数，它接受一个元数据对象，该对象的属性用来描述这个模块。其中最重要的属性如下。
+
+\begin{itemize}
+  \item \verb|declarations|（可声明对象表） —— 那些属于本 \verb|NgModule| 的组件、指令、管道。
+  
+  \item \verb|exports|（导出表） —— 那些能在其它模块的组件模板中使用的可声明对象的子集。
+  
+  \item \verb|imports|（导入表） —— 那些导出了本模块中的组件模板所需的类的其它模块。
+  
+  \item \verb|providers| —— 本模块向全局服务中贡献的那些服务的创建器。 这些服务能被本应用中的任何部分使用。（你也可以在组件级别指定服务提供商，这通常是首选方式。）
+  
+  \item \verb|bootstrap| —— 应用的主视图，称为根组件。它是应用中所有其它视图的宿主。只有根模块才应该设置这个 \verb|bootstrap| 属性。
+\end{itemize}
+
+
+下面是一个简单的根 NgModule 定义：
+
+\begin{lstlisting}[language=TypeScript,caption={src/app/app.module.ts}]
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+@NgModule({
+  imports:      [ BrowserModule ],
+  providers:    [ Logger ],
+  declarations: [ AppComponent ],
+  exports:      [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+\end{lstlisting}
+
+\begin{lstlisting}[style=bashInputStyle]
+cd my-app
+ng serve --open
+\end{lstlisting}
+
+\begin{lstlisting}[style=bashOutputStyle]
+blablabla
+\end{lstlisting}
+
+\section{boxes}
+
+\noindent\verb|\begin{titledBox}{<title>} <content> \end{titledBox}|
+
+\begin{titledBox}{HTTP/Console 内核}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{titledBox}
+
+\noindent\verb|\begin{noteBox} <content> \end{noteBox}|
+
+\begin{noteBox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{noteBox}
+
+\noindent\verb|\begin{importantBox} <content> \end{importantBox}|
+
+\begin{importantBox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{importantBox}
+
+\noindent\verb|\begin{tipBox} <content> \end{tipBox}|
+
+\begin{tipBox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{tipBox}
+
+\noindent\verb|\begin{warningBox} <content> \end{warningBox}|
+
+\begin{warningBox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{warningBox}
+
+\noindent\verb|\begin{shellBox} <content> \end{shellBox}|
+
+\begin{shellBox}
+cd my-app
+ng serve --open
+\end{shellBox}
+
+\noindent\verb|\begin{invertedShellBox} <content> \end{invertedShellBox}|
+
+\begin{invertedShellBox}
+cd my-app
+ng serve --open
+\end{invertedShellBox}
+
+\end{document}
