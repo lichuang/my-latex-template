@@ -1029,6 +1029,7 @@
   % we define headers like \definitionname before
   \ELEGANT@newtheorem{theorem}{thm}{thmstyle}
   \ELEGANT@newtheorem{definition}{def}{defstyle}
+  \ELEGANT@newtheorem{property}{prop}{defstyle}
   \ELEGANT@newtheorem{postulate}{pos}{thmstyle}
   \ELEGANT@newtheorem{axiom}{axi}{thmstyle}
   \ELEGANT@newtheorem{corollary}{cor}{thmstyle}
@@ -1193,13 +1194,14 @@
   \par\noindent\textbf{\color{second}\proofname\;}
   \color{black!90}\cfs}{
   % \hfill$\Box$\quad
+  \hfill $\square$
   \par}
 
 \newenvironment{solution}{\par\noindent\textbf{\color{main}\solutionname} \citshape}{\par}
 \newenvironment{remark}{\noindent\textbf{\color{second}\remarkname}}{\par}
 \newenvironment{assumption}{\par\noindent\textbf{\color{third}\assumptionname} \citshape}{\par}
 \newenvironment{conclusion}{\par\noindent\textbf{\color{third}\conclusionname} \citshape}{\par}
-\newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
+%%\newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
 \newenvironment{custom}[1]{\par\noindent\textbf{\color{third} #1} \citshape}{\par}
 
 \RequirePackage{multicol}
