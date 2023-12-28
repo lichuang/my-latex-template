@@ -1204,6 +1204,14 @@
 %%\newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
 \newenvironment{custom}[1]{\par\noindent\textbf{\color{third} #1} \citshape}{\par}
 
+\newtcolorbox{boxremark}{
+    colback = blue!5!white, 
+    colframe = blue!75!black, 
+    fonttitle = \bfseries,
+    colbacktitle = blue!85!black, enhanced,
+    title=\remarkname
+}
+
 \RequirePackage{multicol}
 \tcbset{
   introductionsty/.style={
