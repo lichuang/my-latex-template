@@ -940,6 +940,57 @@ Lebesgue 积分有几种不同的定义方式。我们将采用逐步定义非�
 	\end{enumerate}
 \end{boxremark}
 
+\subsection{算法效果}
+
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{带行号和input、output的算法示意}\label{alg:cap}
+\hspace*{\algorithmicindent} \textbf{Input} \\
+\hspace*{\algorithmicindent} \textbf{Output} 
+\begin{algorithmic}[1]
+\Procedure{MyProcedure}{}
+%    \Procedure{MyProcedure}{$x,y$}
+%     % Input:
+%     \Comment{Input: x}
+%     % Output:
+%     \Comment{Output:y}
+    \State $\textit{stringlen} \gets \textit{length of } \textit{string}$
+    \State $i \gets \textit{patlen}$
+    \State \emph{top}:
+    \If {$i > \textit{stringlen}$} \Return false
+    \EndIf
+    \State $j \gets \textit{patlen}$
+    \State \emph{loop}:
+    \If {$\textit{string}(i) = \textit{path}(j)$}
+    \State $j \gets j-1$.
+    \State $i \gets i-1$.
+    \State \textbf{goto} \emph{loop}.
+    \State \textbf{close};
+    \EndIf
+    \State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
+    \State \textbf{goto} \emph{top}.
+    \EndProcedure\end{algorithmic}
+\end{algorithm}
+
 \chapter{常见问题集}
 
 我们根据用户社区反馈整理了下面一些常见的问题，用户在遇到问题时，应当首先查阅本手册和本部分的常见的问题。

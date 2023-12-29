@@ -1856,3 +1856,11 @@
   \parbox{\textwidth}{\textcolor{violet}\faCode~\textcolor{violet}{#1#2}\hspace{.5em}\fzkai #3}
 }
 \captionsetup[lstlisting]{format=codecaptionformat}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 算法伪代码相关的设定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{algorithm}
+\RequirePackage[noend]{algpseudocode}
