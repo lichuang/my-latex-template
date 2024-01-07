@@ -1865,6 +1865,13 @@
 \RequirePackage{algorithm}
 \RequirePackage[noend]{algpseudocode}
 
-
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 一些自定义的颜色名字
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
+\definecolor{darkgray}{rgb}{0.66, 0.66, 0.66}
+>>>>>>> 7eb8f04 (ci)

@@ -940,6 +940,21 @@ Lebesgue 积分有几种不同的定义方式。我们将采用逐步定义非�
 	\end{enumerate}
 \end{boxremark}
 
+\subsection{代码效果}
+
+\begin{lstlisting}[language=TypeScript,caption={src/app/app.module.ts}]
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+@NgModule({
+  imports:      [ BrowserModule ],
+  providers:    [ Logger ],
+  declarations: [ AppComponent ],
+  exports:      [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+\end{lstlisting}
+
 \subsection{算法效果}
 
 \begin{algorithm}
@@ -991,6 +1006,15 @@ Lebesgue 积分有几种不同的定义方式。我们将采用逐步定义非�
     \EndProcedure\end{algorithmic}
 \end{algorithm}
 
+\subsection{表格效果}
+
+    \begin{tabular}{|l|l|}\hline
+    	\rowcolor{darkblue}\textsc{\color{white}Release}  &\textsc{\color{white}Codename} \\ \hline
+    	\rowcolor{gray!10}Fedora Core 4 &Stentz \\ \hline
+    	\rowcolor{gray!40}&Fedora 8 \\ 
+    	\rowcolor{gray!40}\multirow{-2}{*}{Multi-Row} &Werewolf \\ \hline
+    \end{tabular}
+    
 \chapter{常见问题集}
 
 我们根据用户社区反馈整理了下面一些常见的问题，用户在遇到问题时，应当首先查阅本手册和本部分的常见的问题。
