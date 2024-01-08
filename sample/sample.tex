@@ -940,6 +940,7 @@ Lebesgue 积分有几种不同的定义方式。我们将采用逐步定义非�
 	\end{enumerate}
 \end{boxremark}
 
+\chapter{Latex示例}
 \subsection{代码效果}
 
 \begin{lstlisting}[language=TypeScript,caption={src/app/app.module.ts}]
@@ -1008,13 +1009,60 @@ export class AppModule { }
 
 \subsection{表格效果}
 
+\subsection{表格参数}
+花括号中的 “\{c|c\}” 表示文本在列中的位置。下表总结了位置参数及其说明：
+\begin{enumerate}
+	\item c 	将文本置于中间
+	\item l 	将文本左对齐
+	\item r 	将文本右对齐
+	\item p\{宽度\} 	文本对齐单元格顶部
+	\item m\{宽度\} 	文本对齐单元格中间
+	\item b\{宽度\} 	文本对齐单元格底部
+\end{enumerate}
+
+m{宽度} 和 b{宽度} 都要求在最前面指定数组包。
+
+
+\subsubsection{带颜色效果的表格}
     \begin{tabular}{|l|l|}\hline
     	\rowcolor{darkblue}\textsc{\color{white}Release}  &\textsc{\color{white}Codename} \\ \hline
     	\rowcolor{gray!10}Fedora Core 4 &Stentz \\ \hline
     	\rowcolor{gray!40}&Fedora 8 \\ 
     	\rowcolor{gray!40}\multirow{-2}{*}{Multi-Row} &Werewolf \\ \hline
     \end{tabular}
+ 
+\subsubsection{多行表格}
+
+multirow 采用以下参数 “$\textbackslash$multirow{行的数量}{宽度}{文本}”：
+
+\begin{tabular}{|l|l|}\hline
+	Release &Codename \\ \hline
+	Fedora Core 4 &Stentz \\ \hline
+	\multirow{2}{*}{MultiRow} &Fedora 8 \\ 
+	&Werewolf \\ \hline
+\end{tabular}
+在上面的示例中，指定了两行，“*” 告诉 LaTeX 自动管理单元格的大小。
+
+也可以使用“makecell”来定义多行文本：
+
+\begin{tabular}{ | c | c | c |}
+   \hline
+   \thead{A Head} & \thead{A Second \\ Head} & \thead{A Third \\ Head} \\
+   \hline
+   Some text &  \makecell{Some really \\ longer text}  & Text text text  \\
+   \hline
+\end{tabular}
+
+\subsubsection{多列表格}
+multicolumn 参数是 “$\textbackslash$multicolumn\{列的数量\}\{单元格选项\}\{位置\}\{文本\}”：
+
+    \begin{tabular}{|l|l|l|}\hline
+    	Release &Codename &Date \\ \hline
+    	Fedora Core 4 &Stentz &2005 \\ \hline
+    	\multicolumn{3}{|c|}{Mulit-Column} \\ \hline
+    \end{tabular}
     
+
 \chapter{常见问题集}
 
 我们根据用户社区反馈整理了下面一些常见的问题，用户在遇到问题时，应当首先查阅本手册和本部分的常见的问题。

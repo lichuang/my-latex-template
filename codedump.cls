@@ -10,6 +10,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elegantbook}[2022/12/31 v4.5 ElegantBook document class]
 
+%% 为了支持多行表格引入的包
+\RequirePackage{makecell}
 
 %%%
 \RequirePackage{kvoptions}
