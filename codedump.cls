@@ -1206,15 +1206,26 @@
 %%\newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
 \newenvironment{custom}[1]{\par\noindent\textbf{\color{third} #1} \citshape}{\par}
 
+\definecolor{main}{HTML}{5989cf}    % setting main color to be used
+\definecolor{sub}{HTML}{cde4ff}     % setting sub color to be used
+
 \newenvironment{boxremark}
 {\begin{tcolorbox}
-[colback = blue!5!white, 
+[
+ %colback = blue!5!white, 
+ colback = sub, 
  colframe = blue!75!black, 
  fonttitle = \bfseries,
  colbacktitle = blue!85!black, enhanced,
  title=\remarkname, ]}
 {\end{tcolorbox}}
 
+\newtcolorbox{boxH}{
+    colback = sub, 
+    colframe = main, 
+    boxrule = 0pt, 
+    leftrule = 6pt, % left rule weight
+}
 
 \RequirePackage{multicol}
 \tcbset{

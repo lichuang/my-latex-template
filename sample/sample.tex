@@ -940,8 +940,191 @@ Lebesgue 积分有几种不同的定义方式。我们将采用逐步定义非�
 	\end{enumerate}
 \end{boxremark}
 
+\begin{boxH}
+	\begin{enumerate}
+		\item 在实数轴上，表示两点距离的符号是求两点间的绝对值，如$|x - y|$；在$\mathbb{R}^n$维空间上，求两点距离的符号是$\lVert  \rVert$，如$\lVert x-y \rVert$。
+		\item 	三角不等式的几何意义：有三个点$x,y,z \in \mathbb{R}^n$，设向量$\vec{x} = x - y,\vec{y} = y - z$，三角不等式就是这三点围成的三角形中，两边之和大于第三边。
+	\end{enumerate}
+\end{boxH}
+
 \chapter{Latex示例}
-\subsection{代码效果}
+\section{不同的数学符号字体}
+\begin{enumerate}
+	\item mathcal：花体、书法字体（calligraphy），如：
+		$$
+			\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}
+		$$
+		比如：
+		损失函数：
+		$$
+			\mathcal L
+		$$
+		时间复杂度：
+		$$
+			\mathcal O
+		$$
+		样本集：
+		$$
+			\mathcal D
+		$$
+		高斯分布：
+		$$
+			\mathcal N
+		$$
+	\item mathbb：黑板粗体（blackboard bold）：
+		$$
+			\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}
+		$$
+	\item mathbf：粗体、黑体（boldface）
+		$$
+			\mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}
+		$$
+\end{enumerate}
+
+\begin{example}
+
+Let \( \mathcal{T} \) be a topological space, a basis is defined as
+\[
+ \mathcal{B} = \{B_{\alpha} \in \mathcal{T}\, |\,  U = \bigcup B_{\alpha} \forall U \in \mathcal{T} \}
+\]
+
+以及：
+
+\begin{align*}
+RQSZ \\
+\mathcal{RQSZ} \\
+\mathfrak{RQSZ} \\
+\mathbb{RQSZ}
+\end{align*}
+
+还有：
+\begin{align*}
+3x^2 \in R \subset Q \\
+\mathnormal{3x^2 \in R \subset Q} \\
+\mathrm{3x^2 \in R \subset Q} \\
+\mathit{3x^2 \in R \subset Q} \\
+\mathbf{3x^2 \in R \subset Q} \\
+\mathsf{3x^2 \in R \subset Q} \\
+\mathtt{3x^2 \in R \subset Q}
+\end{align*}
+\end{example}
+
+
+\section{字体示例}
+   %字体族设置（罗马字体、无衬线字体、打字机字体）
+    \textrm{Roman Family}  \textsf{Sans Serif Family}  \texttt{Typewriter Family}
+
+    \rmfamily Roman Family  {\sffamily Sans Serif Family}  {\ttfamily Typewriter Family}
+
+    {\sffamily who you are? you find self on everyone around.take you as the same as others!}
+
+    {\ttfamily Are you wiser than others?definitely no. in some ways,may it is true.}
+
+    %字体系列设置（粗细、宽度）
+    textmd{Medium Series}  \textbf{Boldface Series}
+
+    {\mdseries Medium Series}  {\bfseries Boldface Series}
+
+    %字体形状（直立、斜体、伪斜体、小型大写）
+    \textup{直立（Upright Shape）}  \textit{斜体（Italic Shape）}
+    \textsl{伪斜体（Slanted Shape）}  \textsc{小型大写（Small Caps Shape）}
+
+    {\upshape Upright Shape}  {\itshape Italic Shape} 
+    {\slshape Slanted Shape}  {\scshape Small Caps Shape}
+
+    %中文字体
+    {\songti 宋体}  \quad{\heiti 黑体}  
+    \quad{\fangsong 仿宋}  \quad{\kaishu 楷书}
+
+    中文字体的\textbf{粗体}\textit{斜体}
+
+    %字体大小
+    {\tiny         hello} \\
+    {\scriptsize   hello} \\
+    {\footnotesize hello} \\
+    {\small        hello} \\
+    {\normalsize   hello} \\
+    {\large        hello} \\
+    {\Large        hello} \\
+    {\LARGE        hello} \\
+    {\huge         hello} \\
+    {\Huge         hello}  \\
+
+
+    %中文字号设置命令
+    \zihao{-0} 你好！
+    
+\section{公式效果}
+括号公式：
+
+$$
+\left\{
+\begin{aligned}
+x & = x_0 + t \cos \alpha, \\
+y & = y_0 + t \sin \alpha \\
+z & = f(x_0 + t \cos a, y_0 + t \sin \alpha)
+\end{aligned}
+\right.
+$$
+
+\section{一些特殊的符号}
+\begin{enumerate}
+	\item $ \ell ~ \boldsymbol\ell $
+\end{enumerate}
+\section{画图}
+\subsection{树形图}
+主要参数：
+\begin{enumerate}
+	\item thick,scale是整张树形图的大小，可以在0~1内调整树形图的大小
+	\item every node/.style=\{scale=0.8\}是每个节点文字的大小，可以修改调整节点文字的大小。
+	\item child [missing] \{\}充当间隔符号，隔开各个子树，可以增减其个数调整子树间距。
+	\item ['grow'=right]：'grow'=上下左右，可以调整树形图开口方向
+\end{enumerate}
+
+\begin{figure}
+	\center
+	\caption{树形图示例}
+\begin{tikzpicture}   %创建环境
+            [thick,scale=0.6, every node/.style={scale=0.8}]
+            %thick,scale是整张树形图的大小，可以在0~1内调整树形图的大小
+            %every node/.style={scale=0.8}是每个节点文字的大小，可以修改调整节点文字的大小。
+
+            \node {数据中心网络}
+            child {node {交换机中心架构}
+                child {node {树形架构}
+                }
+                child [missing] {}
+                child {node {平坦架构}
+                }
+                child [missing] {}
+                child {node {非结构型架构}
+                }
+            }    
+            child [missing] {}    %child [missing] {}充当间隔符号，隔开各个子树，可以增减其个数调整子树间距。
+            child [missing] {}
+            child [missing] {}    
+            child [missing] {}        
+            child { node {服务器中心架构}
+                child {node {巨型网络架构}
+                }
+                child [missing] {} %child [missing] {}充当间隔符号
+                child {node {标准网络架构}
+                }
+            }    
+            child [missing] {}
+            child [missing] {}    
+            child [missing] {}    
+            child { node {增强行架构}
+                child {node {无线网络架构}
+                }
+                child [missing] {}
+                child {node {光纤网络架构}
+                }
+            };
+        \end{tikzpicture}
+\end{figure}        
+
+\section{代码效果}
 
 \begin{lstlisting}[language=TypeScript,caption={src/app/app.module.ts}]
 import { NgModule }      from '@angular/core';
@@ -956,7 +1139,7 @@ import { BrowserModule } from '@angular/platform-browser';
 export class AppModule { }
 \end{lstlisting}
 
-\subsection{算法效果}
+\section{算法效果}
 
 \begin{algorithm}
 \caption{An algorithm with caption}\label{alg:cap}
@@ -1007,9 +1190,25 @@ export class AppModule { }
     \EndProcedure\end{algorithmic}
 \end{algorithm}
 
-\subsection{表格效果}
+\begin{algorithm} 
+\caption{Iterative Policy Evaluation Algorithm}
+\begin{algorithmic}[1]
+\Require $\pi$, the policy to be evaluated
+\State Initilize $V(s) = 0$, for all $s \in \mathcal S^+$
+\Repeat
+\ForEach {$s \in \mathcal S $}
+\State $v \gets V(s)$
+\State $V(s) \gets \sum_a \pi(s,a) \sum_{s'} \mathcal P_{ss'}^a [ \mathcal R_{ss'}^a + \gamma V(s')$
+\State $\Delta \gets \max(\Delta, |v- V(s)|)$
+\EndFor
+\Until {$\Delta < \theta \text{ (a small positive number)}$}
+\Ensure $V \approx V^\pi$
+\end{algorithmic}
+\end{algorithm}
 
-\subsection{表格参数}
+\section{表格效果}
+
+\section{表格参数}
 花括号中的 “\{c|c\}” 表示文本在列中的位置。下表总结了位置参数及其说明：
 \begin{enumerate}
 	\item c 	将文本置于中间
@@ -1023,7 +1222,7 @@ export class AppModule { }
 m{宽度} 和 b{宽度} 都要求在最前面指定数组包。
 
 
-\subsubsection{带颜色效果的表格}
+\subsection{带颜色效果的表格}
     \begin{tabular}{|l|l|}\hline
     	\rowcolor{darkblue}\textsc{\color{white}Release}  &\textsc{\color{white}Codename} \\ \hline
     	\rowcolor{gray!10}Fedora Core 4 &Stentz \\ \hline
@@ -1031,7 +1230,7 @@ m{宽度} 和 b{宽度} 都要求在最前面指定数组包。
     	\rowcolor{gray!40}\multirow{-2}{*}{Multi-Row} &Werewolf \\ \hline
     \end{tabular}
  
-\subsubsection{多行表格}
+\subsection{多行表格}
 
 multirow 采用以下参数 “$\textbackslash$multirow{行的数量}{宽度}{文本}”：
 
