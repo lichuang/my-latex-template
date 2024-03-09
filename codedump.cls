@@ -1209,7 +1209,7 @@
 \definecolor{main}{HTML}{5989cf}    % setting main color to be used
 \definecolor{sub}{HTML}{cde4ff}     % setting sub color to be used
 
-\newenvironment{boxremark}
+\newenvironment{remarkbox}
 {\begin{tcolorbox}
 [
  %colback = blue!5!white, 
@@ -1220,8 +1220,8 @@
  title=\remarkname, ]}
 {\end{tcolorbox}}
 
-\newtcolorbox{boxH}{
-    colback = sub, 
+\newtcolorbox{emphasizeBox}{
+    colback = green!10!white, 
     colframe = main, 
     boxrule = 0pt, 
     leftrule = 6pt, % left rule weight
