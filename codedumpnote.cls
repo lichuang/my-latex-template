@@ -13,6 +13,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{CODEDUMPNOTE}[2024/04/04 ]
 
+% ------------------------------------------------------------
+% 选项设置
+% ------------------------------------------------------------
 % 使用 key-val 格式指定选项之用, 一切以 @CODEDUMPNOTE 起始.
 \RequirePackage{kvoptions}
 \RequirePackage{etoolbox}
@@ -41,6 +44,11 @@
 \DeclareStringOption[cn]{lang}
 \DeclareVoidOption{en}{\ekv{lang=en}}
 \DeclareVoidOption{cn}{\ekv{lang=cn}}
+
+% defalut mode is simple
+\DeclareStringOption[simple]{mode}
+\DeclareVoidOption{fancy}{\ekv{mode=fancy}}
+\DeclareVoidOption{simple}{\ekv{mode=simple}}
 
 % Execution of options
 % ---------------------
@@ -83,6 +91,15 @@
 
 % Main codes
 % ----------
+
+% ------------------------------------------------------------
+% font options
+% ------------------------------------------------------------
+\ifcsname kaishu\endcsname
+  \newcommand{\citshape}{\kaishu}
+\else
+  \newcommand{\citshape}{\itshape}
+\fi
 
 % ------------------------------------------------------------
 % 章节设置
@@ -136,6 +153,8 @@
   \newcommand{\historyname}{版本更新历史}
   \newcommand{\beforechap}{第}
   \newcommand{\afterchap}{章}
+  \renewcommand{\chaptermark}[1]{\markboth{附录 \thechapter \quad #1}{}}
+  \newcommand{\refname}{参考文献}
 }{\relax}
 
 \ifdefstring{\@CODEDUMPNOTE@lang}{en}{
@@ -172,6 +191,8 @@
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Updates:}
   \newcommand{\historyname}{Version History}
+  \renewcommand{\chaptermark}[1]{\markboth{Appendix \thechapter \quad #1}{}}
+  \newcommand{\refname}{References}
 }{\relax}
 % ------------------------------------------------------------
 \usetikzlibrary{shapes.symbols} % 稍后定义 hint 环境所需
@@ -211,40 +232,17 @@
     \thispagestyle{empty}
     \addtocontents{toc}{\protect\thispagestyle{empty}}
 
-    % 重置目录标题
-    \if@CODEDUMPNOTE@traditional
-        \renewcommand{\contentsname}{目錄}
-    \else
-        \renewcommand{\contentsname}{目录}
-    \fi
-
     \tableofcontents    % 印出目录
 }
 
 % 扩张 \appendix: 重置天眉
 \g@addto@macro\appendix{
-    % 为附录重置天眉格式
-    \if@CODEDUMPNOTE@traditional
-        \renewcommand{\appendixname}{附錄}
-        \renewcommand{\chaptermark}[1]{\markboth{附錄 \thechapter \quad #1}{}}
-    \else
-        \renewcommand{\appendixname}{附录}
-        \renewcommand{\chaptermark}[1]{\markboth{附录 \thechapter \quad #1}{}}
-    \fi
     \renewcommand{\sectionmark}[1]{\markright{\S\thesection \quad #1}}
 }
 
 % 扩展 \backmatter: 设置文献显示方式. 注意: 若有附录则须重置天眉格式
 \g@addto@macro\backmatter{
     \renewcommand{\em}{\itshape} % 书目部分以斜体表示强调
-    % 汉化参考文献标题
-    \if@CODEDUMPNOTE@traditional
-        \renewcommand{\refname}{參考文獻}
-        \renewcommand{\bibname}{參考文獻}
-    \else
-        \renewcommand{\refname}{参考文献}
-        \renewcommand{\bibname}{参考文献}
-    \fi
 }
 
 % 以下设置 biblatex.
@@ -308,31 +306,6 @@
 % 输入章节标题设置
 \input{\@CODEDUMPNOTE@titlesetup}
 
-% 设置习题环境, 置于每章最后: 不用 \section* 以免格式混淆
-\if@CODEDUMPNOTE@traditional
-    \newenvironment{Exercises}{%
-        \markright{習題}
-        \addcontentsline{toc}{section}{習題}
-        \vspace{1em}\begin{center}
-            \Large\CJKfamily{sectionfont} 習題
-        \end{center}\vspace{0.7em}
-        \begin{small}\begin{enumerate}[\bfseries 1.] %
-            }{  % 结束
-        \end{enumerate}\end{small}
-    }
-\else
-    \newenvironment{Exercises}{%
-        \markright{习题}
-        \addcontentsline{toc}{section}{习题}
-        \vspace{1em}\begin{center}
-            \Large\CJKfamily{sectionfont} 习题
-        \end{center}\vspace{0.7em}
-        \begin{small}\begin{enumerate}[\bfseries 1.] %
-            }{  % 结束
-        \end{enumerate}\end{small}
-    }
-\fi
-
 % 习题提示 (定义为环境, 穿插文中)
 \newenvironment{hint}{%
     \ifvmode % 用 \ifvmode 测试: 如果提示另起新段, 则不加空白.
@@ -381,7 +354,7 @@
 \fi
 
 \AtEndPreamble{
-    \RequirePackage[thmmarks, amsmath, hyperref]{ntheorem}  % 设置定理环境所需
+    %\RequirePackage[thmmarks, amsmath, hyperref]{ntheorem}  % 设置定理环境所需
     
     % 若 hyperref 已载入, 则按 colors 的 Bool 值设置链接色彩.
     \@ifpackageloaded{hyperref}{
@@ -456,167 +429,13 @@
     \addtolength{\headheight}{0.5pt}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{amsthm}
-%Theorem
-\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
-%%% upto here
-\newcounter{theo}[section]
-\newenvironment{theo}[1][]{%
-\stepcounter{theo}%
-\ifstrempty{#1}%
- {\mdfsetup{%
-   frametitle={%
-    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-    \node[anchor=east,rectangle,fill=gray!50]
-         {\strut Theorem~\thetheo};}}
- }%
-{\mdfsetup{%
-  frametitle={%
-   \tikz[baseline=(current bounding box.east),outer sep=0pt]
-   \node[anchor=east,rectangle,fill=gray!50]
-        {\strut Theorem~\thetheo:~#1};}}%
- }%
-\mdfsetup{innertopmargin=10pt,linecolor=gray!50,%
-       linewidth=2pt,topline=true,
-       frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-   \begin{mdframed}[]\relax%
-}
-{\end{mdframed}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % ------------------------------------------------------------
-% COLORS
-
-% Color palette from https://flatuicolors.com/palette/us
-\definecolor{amzchaptercolor}{HTML}{0984e3}
-\definecolor{amzdfnboxcolor}{HTML}{0984e3}
-\definecolor{amzthmboxcolor}{HTML}{6c5ce7}
-\definecolor{amzexboxcolor}{HTML}{fdcb6e}
-\definecolor{amzgenboxcolor}{HTML}{00b894}
-\definecolor{amztecboxcolor}{HTML}{e17055}
-\definecolor{amzcodeboxcolor}{HTML}{2d3436}
-\definecolor{amznoteboxcolor}{HTML}{d63031}
-
+% env settings
 % ------------------------------------------------------------
-% COLOR BOXES
-\if@CODEDUMPNOTE@fastcompile
-\tcbset{
-    amzdefaultstyle/.style={
-        fonttitle=\strut\bfseries,  % strut for uniform title height
-        breakable
-    },
-    genboxstyle/.style={
-        amzdefaultstyle,
-    },
-    noteboxstyle/.style={breakable},
-    codeboxstyle/.style={
-        overlay={\begin{tcbclipinterior}\fill[darkgray!20!white] (frame.south west) rectangle ([xshift=6mm]frame.north west);\end{tcbclipinterior}},
-        skin=bicolor,
-        collower=white,
-        colbacklower=darkgray
-    },
-}
 
-%test
+\newcounter{sectioncounter}
 
-\else %\ifamznotes@fastcompile
-\tcbset{
-    amzdefaultstyle/.style={
-        enhanced,
-        drop fuzzy shadow,
-        fonttitle=\strut\bfseries,  % strut for uniform title height
-        boxrule=0pt,
-        frame hidden,
-        % parbox=false,               % normal paragraph spacing
-        breakable,
-    },
-    genboxstyle/.style={
-        amzdefaultstyle,
-        frame style={fill=amzgenboxcolor!85!black},
-        interior style={fill=amzgenboxcolor!5!white},
-        segmentation style={solid,draw=amzgenboxcolor!50!black,opacity=0.25,line width=1pt}
-    },
-    noteboxstyle/.style={
-        enhanced,
-        boxrule=0pt,
-        frame hidden,
-        borderline west={4pt}{0pt}{amznoteboxcolor},
-        colback=amznoteboxcolor!7!white,
-        sharp corners,
-    },
-    codeboxstyle/.style={
-        overlay={\begin{tcbclipinterior}\fill[darkgray!20!white] (frame.south west) rectangle ([xshift=6mm]frame.north west);\end{tcbclipinterior}},
-        skin=bicolor,
-        collower=white,
-        colbacklower=darkgray
-    },
-}
-
-\fi %\ifamznotes@fastcompile
-
-% Give the index numbers some more space
-\renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{3em}}
-\setlength{\columnsep}{3em}
-
-\newcommand{\amzindex}{
-    \addcontentsline{toc}{chapter}{Index}
-    \chapter*{Index}
-
-    % Remove header for index
-    \renewcommand{\headrulewidth}{0pt}
-    \fancyhead{}
-
-    \begin{multicols}{2}
-        \amzindexbody
-    \end{multicols}
-}
-
-\newcommand{\amzindexbody}{}
-
-\newcommand{\addindexentry}[2]{%
-    \appto\amzindexbody{
-        \iftoggle{#2}{
-            \tcblistof[\section*]{#2}{#1}
-        }{}
-    }
-}
-
-%\newamzbox{environment name}{title}{ref label}{color}[tcolorbox style]
-\newcounter{amzboxcounter}
-\NewDocumentCommand{\newamzbox}{m m m m O{}}{
-    \newtcbtheorem[use counter=amzboxcounter,number within=section,list inside={#3}]{tc#1}{#2}{
-        amzdefaultstyle,
-        frame style={fill=#4!85!black},
-        interior style={fill=#4!5!white},
-        segmentation style={solid,draw=#4!50!black,opacity=0.25,line width=1pt},
-        #5
-    }{#3}
-
-    \providetoggle{#3}
-    \settoggle{#3}{false}
-
-    \newenvironment{#1}[2]{
-        \global\settoggle{#3}{true}
-        \begin{tc#1}{##1}{##2}
-    }{
-        \end{tc#1}
-    }
-
-    \newenvironment{#1*}[1]{
-        \begin{tc#1*}{##1}
-    }{
-        \end{tc#1*}
-    }
-
-    \addindexentry{#2s}{#3}
-}
-
-\newamzbox{dfnbox}{Definition}{dfn}{amzdfnboxcolor}
-
-
+\ifdefstring{\@CODEDUMPNOTE@mode}{simple}{
   \tcbset{
     common/.style={
       fontupper=\citshape,
@@ -639,37 +458,26 @@
         arc=0pt,
         outer arc=0pt},
       separator sign={.},},
-    defstyle/.style={
-      common,
-      colframe=main,  
-      colback=main!5,
-      colbacktitle=main, 
-      overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{main}{$\clubsuit$}};}},
-    thmstyle/.style={
-      common,
-      colframe=second,  
-      colback=second!5,
-      colbacktitle=second, 
-      overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{second}};}},
-    prostyle/.style={
-      common,
-      colframe=third,  
-      colback=third!5,
-      colbacktitle=third, 
-      overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{third}{$\spadesuit$}};}},
+    blank/.style={
+        breakable,
+        enhanced,
+        width = \textwidth,
+        colback = white, colbacktitle = white,
+        colframe = gray!50, boxrule=0.2mm,
+        coltitle = black,
+        fonttitle = \sffamily,
+        attach boxed title to top left = {yshift=-\tcboxedtitleheight/2,  xshift=\tcboxedtitlewidth/4},
+        boxed title style = {boxrule=0pt, colframe=white},
+        before skip = 0.5cm,
+        top = 3mm,
+        bottom = 3mm,
+    },
     CODEDUMPNOTE@title/.code n args={2}
       {
-
         \tcbset
           {
             title=
-              {
+              \textbf{
                 \csname #1name\endcsname~%
                 \ifdef{\thetcbcounter}{\thetcbcounter}{}%
                 \ifblank{#2}{}{\ (#2)}
@@ -690,17 +498,15 @@
   % will define two environments: numbered ``theorem'' and no-numbered ``theorem*''
   % WARNING FOR MULTILINGUAL: this cs will automatically find \theoremname's definition,
   % WARNING FOR MULTILINGUAL: it should be defined in language settings.
-  \NewDocumentCommand \CODEDUMPNOTE@newtheorem { m m m O{} }{
-    \DeclareTColorBox[use counter=amzboxcounter,number within=section]{#1}{ g o t\label g }{
+  \NewDocumentCommand \CODEDUMPNOTE@boxwithsectionnumber { m m O{} }{
+    \DeclareTColorBox[use counter=sectioncounter,number within=section]{#1}{ g o t\label g }{
         breakable,
         enhanced,
         width = \textwidth,
-        colback = white, colbacktitle = white,
-        colframe = gray!50, boxrule=0.2mm,
-        coltitle = black,
+        boxrule=0.2mm,
         %fonttitle = \sffamily,
         attach boxed title to top left = {yshift=-\tcboxedtitleheight/2,  xshift=\tcboxedtitlewidth/4},
-        boxed title style = {boxrule=0pt, colframe=white},
+        boxed title style = {boxrule=0pt},
         before skip = 0.5cm,
         top = 3mm,
         bottom = 3mm,
@@ -729,9 +535,68 @@
           },
       }
   }
+
+  \NewDocumentCommand \CODEDUMPNOTE@boxwithname { m m O{} }{
+    \DeclareTColorBox{#1}{ g o t\label g }{
+        blank,
+        IfValueTF={##1}
+          {CODEDUMPNOTE@title={#1}{##1}}
+          {
+            IfValueTF={##2}
+            {CODEDUMPNOTE@title={#1}{##2}}
+            {CODEDUMPNOTE@title={#1}{}}
+          },
+      }
+  }
+
   % define several environment 
   % we define headers like \definitionname before
-  \CODEDUMPNOTE@newtheorem{theorem}{thm}{thmstyle}
+  \CODEDUMPNOTE@boxwithsectionnumber{theorem}{thm}
+  \CODEDUMPNOTE@boxwithsectionnumber{definition}{def}
+  \CODEDUMPNOTE@boxwithsectionnumber{postulate}{pos}
+  \CODEDUMPNOTE@boxwithsectionnumber{axiom}{axi}
+  \CODEDUMPNOTE@boxwithsectionnumber{corollary}{cor}
+  \CODEDUMPNOTE@boxwithsectionnumber{lemma}{lem}
+  \CODEDUMPNOTE@boxwithsectionnumber{proposition}{pro}
+  \CODEDUMPNOTE@boxwithsectionnumber{property}{property}
+
+  \CODEDUMPNOTE@boxwithname{note}{note}
+  \CODEDUMPNOTE@boxwithname{remark}{remark}
+
+%% Example with counter
+\newcounter{exam}[chapter]
+\setcounter{exam}{0}
+\renewcommand{\theexam}{\thechapter.\arabic{exam}}
+\newenvironment{example}[1][]{
+  \refstepcounter{exam}
+  \par\noindent\textbf{{\examplename} \theexam #1 }\rmfamily}{
+  \par\ignorespacesafterend}
+
+%% Exercise with counter
+\newcounter{exer}[chapter]
+\setcounter{exer}{0}
+\renewcommand{\theexer}{\thechapter.\arabic{exer}}
+\newenvironment{exercise}[1][]{
+  \refstepcounter{exer}
+  \par\noindent\makebox[-3pt][r]{
+    \scriptsize}
+    \textbf{{\exercisename} \theexer #1 }\rmfamily}{
+    \par\ignorespacesafterend}
+
+%% Problem with counter
+\newcounter{prob}[chapter]
+\setcounter{prob}{0}
+\renewcommand{\theprob}{\thechapter.\arabic{prob}}
+\newenvironment{problem}[1][]{
+  \refstepcounter{prob}
+  \par\noindent\textbf{{\problemname} \theprob #1 }\rmfamily}{
+  \par\ignorespacesafterend}
+
+\newenvironment{solution}{\par\noindent\textbf{\solutionname} \citshape}{\hfill $\square$ \par}
+\newenvironment{proof}{\par\noindent\textbf{\proofname} \citshape}{\hfill $\square$ \par}
+\newenvironment{assumption}{\par\noindent\textbf{\assumptionname} \citshape}{\par}
+\newenvironment{conclusion}{\par\noindent\textbf{\conclusionname} \citshape}{\par}
+}{\relax}
 
 
     \newtcolorbox{remarkbox}{
@@ -823,3 +688,10 @@
 \newcommand\thmheiti{\CJKfamily{hei2}}  % 用于定理名称的黑体
 \newcommand\fangsong{\CJKfamily{fangsong}} % 仿宋
 \renewcommand{\em}{\bfseries\CJKfamily{emfont}} % 强调
+
+
+% ------------------------------------------------------------
+% title settings
+% ------------------------------------------------------------
+
+
