@@ -105,6 +105,9 @@
 \fi
 
 \if@CODEDUMPNOTE@logic
+%\RequirePackage{prftree} % \prf*
+\RequirePackage{mathpartir} % inferrule
+
 \newcommand\tauteq{\mathrel{\vDash \mkern -2.25mu
                                \mathrel{\reflectbox{\ensuremath\vDash}}}}
 
