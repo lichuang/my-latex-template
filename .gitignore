@@ -1,2 +1,11 @@
 sample/.texpadtmp/*
 .DS_Store
+*.aux
+*.bcf
+
+*.log
+*.out
+*.xml
+*.gz
+*.thm
+*.toc

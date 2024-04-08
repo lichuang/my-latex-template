@@ -45,6 +45,7 @@
 \DeclareBoolOption{math}        % enables thmbox and math macros
 \DeclareBoolOption{code}        % enables codebox
 \DeclareBoolOption{logic}       % enables logic macros
+\DeclareBoolOption{quote}       % enables quote macros
 
 % defalut language is cn
 \DeclareStringOption[cn]{lang}
@@ -98,7 +99,7 @@
 \RequirePackage{paralist}
 
 % ------------------------------------------------------------
-% load math required packages 
+% load math\code\logic required packages 
 % ------------------------------------------------------------
 \if@CODEDUMPNOTE@math
     \RequirePackage{amsfonts}
@@ -108,13 +109,31 @@
 %\RequirePackage{prftree} % \prf*
 \RequirePackage{mathpartir} % inferrule
 
+% tautologically equivalent
 \newcommand\tauteq{\mathrel{\vDash \mkern -2.25mu
                                \mathrel{\reflectbox{\ensuremath\vDash}}}}
 
+% syntactically equivalent
 \newcommand\syeq{\mathrel{\vdash \mkern -2.25mu
                                \mathrel{\reflectbox{\ensuremath\vdash}}}}
 \fi
 
+\if@CODEDUMPNOTE@quote
+\usepackage{quoting,xparse}
+
+\NewDocumentCommand{\bywhom}{m}{% the Bourbaki trick
+  {\nobreak\hfill\penalty50\hskip1em\null\nobreak
+   \hfill\mbox{\normalfont(#1)}%
+   \parfillskip=0pt \finalhyphendemerits=0 \par}%
+}
+
+\NewDocumentEnvironment{pquotation}{m}
+  {\begin{quoting}[
+     indentfirst=true,
+     leftmargin=\parindent,
+     rightmargin=\parindent]\itshape}
+  {\bywhom{#1}\end{quoting}}
+\fi
 
 % ------------------------------------------------------------
 % font options

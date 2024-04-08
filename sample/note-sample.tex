@@ -1,4 +1,6 @@
-\documentclass[math,code,logic,mode=simple]{codedumpnote}
+\documentclass[math,code,logic,quote,mode=simple]{codedumpnote}
+
+\usepackage{prftree}
 
 
 \begin{document}
@@ -7,13 +9,22 @@
 	
 	\mainmatter		% 正文开始：逐章引入 TeX 代码
 	
-\chapter{数理逻辑符号}
+\chapter{文本类}
+
+\begin{pquotation}{Dijkstra}
+“我现在年纪大了, 搞了这么多年软件, 错误不知犯了多少, 现在觉悟了。我想, 假设我早年要是在数理逻辑上好好的下点功夫的话, 我就不会犯这么多的错误。不少东西逻辑学家早就说了, 可我不知道。要是我能年轻20岁的话就要回去学逻辑。’我看这是经验之谈, 说明搞技术没有理论指导是不行的, 而我们研究思维科学要从哲学的逻辑学吸收营养。”
+\end{pquotation}
+
+
+\chapter{数理逻辑}
 
 对于两个公式$A,B$，当“$A \vDash B$且$B \vDash A$”时，写作：
 $$
 	A \tauteq B
 $$
 此时称公式A和B\textbf{“逻辑等值（tautologically equivalent）}的（简称为\textbf{等值公式(equivalent)}）”。两个公式为等值公式，当且仅当对这两个公式的任何真假赋值都得到相同的真假值。
+
+
 
 \chapter{数学公式}
 \section{积分的定义}
