@@ -13,6 +13,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{CODEDUMPNOTE}[2024/04/04 ]
 
+
+
 % ------------------------------------------------------------
 % 选项设置
 % ------------------------------------------------------------
@@ -40,6 +42,9 @@
 
 \PassOptionsToPackage{dvipsnames}{xcolor}   % 让 xcolor 带 dvipsnames 选项; tikz 随后会载入之.
 
+\DeclareBoolOption{math}        % enables thmbox and math macros
+\DeclareBoolOption{code}        % enables codebox
+
 % defalut language is cn
 \DeclareStringOption[cn]{lang}
 \DeclareVoidOption{en}{\ekv{lang=en}}
@@ -59,6 +64,7 @@
 % ---------------------
 % 基于 book class, 选项一并载入.
 \LoadClass[10pt]{book}
+%\LoadClass[a4paper,oneside]{book}
 
 \RequirePackage{fontspec}               % XeLaTeX
 \RequirePackage[CJKchecksingle]{xeCJK}  % XeCJK
@@ -68,6 +74,7 @@
 \RequirePackage[intlimits]{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage[centercolon]{mathtools}
+
 
 % 支持直接引入 PDF 页面
 \RequirePackage{pdfpages}
@@ -89,8 +96,12 @@
 % 载入 paralist
 \RequirePackage{paralist}
 
-% Main codes
-% ----------
+% ------------------------------------------------------------
+% load math required packages 
+% ------------------------------------------------------------
+\if@CODEDUMPNOTE@math
+    \RequirePackage{amsfonts}
+\fi
 
 % ------------------------------------------------------------
 % font options
@@ -695,3 +706,24 @@
 % ------------------------------------------------------------
 
 
+% ------------------------------------------------------------
+% 引入的包
+% ------------------------------------------------------------
+% 生成链接
+\RequirePackage{hyperref}
+\hypersetup{
+  breaklinks,
+  unicode,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdfkeywords={ElegantBook},
+  colorlinks,
+  linkcolor=winered,
+  citecolor=winered,
+  urlcolor=winered,
+  plainpages=false,
+  pdfstartview=FitH,
+  pdfborder={0 0 0},
+  linktocpage
+}
