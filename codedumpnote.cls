@@ -44,6 +44,7 @@
 
 \DeclareBoolOption{math}        % enables thmbox and math macros
 \DeclareBoolOption{code}        % enables codebox
+\DeclareBoolOption{logic}       % enables logic macros
 
 % defalut language is cn
 \DeclareStringOption[cn]{lang}
@@ -102,6 +103,15 @@
 \if@CODEDUMPNOTE@math
     \RequirePackage{amsfonts}
 \fi
+
+\if@CODEDUMPNOTE@logic
+\newcommand\tauteq{\mathrel{\vDash \mkern -2.25mu
+                               \mathrel{\reflectbox{\ensuremath\vDash}}}}
+
+\newcommand\syeq{\mathrel{\vdash \mkern -2.25mu
+                               \mathrel{\reflectbox{\ensuremath\vdash}}}}
+\fi
+
 
 % ------------------------------------------------------------
 % font options
@@ -210,7 +220,10 @@
 
 % 定义在 draftmark=true 模式下显示版本信息的指令
 \RequirePackage[iso, english]{isodate}  % 使 \today 印出 yyyy-mm-dd
-\providecommand{\@CODEDUMPNOTE@draftstring}{{\color{gray!40}\heiti 未定稿: \today}}
+
+\if@CODEDUMPNOTE@draftmark
+    \providecommand{\@CODEDUMPNOTE@draftstring}{{\color{gray!40}\heiti 未定稿: \today}}
+\fi
 
 \onehalfspacing % 行距
 %\raggedbottom  % 减小页面空白
