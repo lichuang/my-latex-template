@@ -105,6 +105,9 @@
     \RequirePackage{amsfonts}
 \fi
 
+\if@CODEDUMPNOTE@code
+    \RequirePackage{listings}
+\fi
 \if@CODEDUMPNOTE@logic
 %\RequirePackage{prftree} % \prf*
 \RequirePackage{mathpartir} % inferrule
