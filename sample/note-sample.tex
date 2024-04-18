@@ -1,4 +1,4 @@
-\documentclass[math,code,logic,quote,mode=simple]{codedumpnote}
+\documentclass[math,code,logic,quote,code,mode=simple]{codedumpnote}
 
 \usepackage{prftree}
 
@@ -8,14 +8,15 @@
 	% 注意: 为了简化, 本模板不含封面. 请通过文档类的参数进行设置.
 	
 	\mainmatter		% 正文开始：逐章引入 TeX 代码
-	
+
+\part{文本类}
 \chapter{文本类}
 
 \begin{pquotation}{Dijkstra}
 “我现在年纪大了, 搞了这么多年软件, 错误不知犯了多少, 现在觉悟了。我想, 假设我早年要是在数理逻辑上好好的下点功夫的话, 我就不会犯这么多的错误。不少东西逻辑学家早就说了, 可我不知道。要是我能年轻20岁的话就要回去学逻辑。’我看这是经验之谈, 说明搞技术没有理论指导是不行的, 而我们研究思维科学要从哲学的逻辑学吸收营养。”
 \end{pquotation}
 
-
+\part{数学类}
 \chapter{数理逻辑}
 
 对于两个公式$A,B$，当“$A \vDash B$且$B \vDash A$”时，写作：
@@ -104,6 +105,94 @@ $$
 回归分析（regression analysis） 是确定两种或两种以上变量间相互依赖的定量关系的一种统计分析方法。运用十分广泛，回归分析按照涉及的变量的多少，分为一元回归和多元回归分析；按照因变量的多少，可分为简单回归分析和多重回归分析；按照自变量和因变量之间的关系类型，可分为线性回归分析和非线性回归分析。
 \end{conclusion}
 
+\part{代码类}
+\chapter{代码}
+\begin{lstlisting}[escapeinside={(*}{*)},caption={整数乘法的分而治之算法实现},label={multiply},frame=single]
+function multiply(x, y)
+Input: Positive integers x and y, in binary
+Output: Their product
+
+n = max(size of x, size of y) 
+if n = 1: return xy
+
+(*$x_L,x_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: x$*)
+(*$y_L,y_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: y$*)
+
+(*$P_1 = multiply(x_L,y_L)$*)
+(*$P_2 = multiply(x_R,y_R)$*)
+(*$P_3 = multiply(x_L+x_R,y_L+y_R)$*)
+
+(*$return \: P_1 \times 2^n + (P_3 - P_1 - P_2 ) \times 2^{n/2} + P_2$*)
+\end{lstlisting}
+
+\chapter{算法}
+
+\section{算法效果}
+
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{带行号和input、output的算法示意}\label{alg:cap}
+\hspace*{\algorithmicindent} \textbf{Input} \\
+\hspace*{\algorithmicindent} \textbf{Output} 
+\begin{algorithmic}[1]
+\Procedure{MyProcedure}{}
+%    \Procedure{MyProcedure}{$x,y$}
+%     % Input:
+%     \Comment{Input: x}
+%     % Output:
+%     \Comment{Output:y}
+    \State $\textit{stringlen} \gets \textit{length of } \textit{string}$
+    \State $i \gets \textit{patlen}$
+    \State \emph{top}:
+    \If {$i > \textit{stringlen}$} \Return false
+    \EndIf
+    \State $j \gets \textit{patlen}$
+    \State \emph{loop}:
+    \If {$\textit{string}(i) = \textit{path}(j)$}
+    \State $j \gets j-1$.
+    \State $i \gets i-1$.
+    \State \textbf{goto} \emph{loop}.
+    \State \textbf{close};
+    \EndIf
+    \State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
+    \State \textbf{goto} \emph{top}.
+    \EndProcedure\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} 
+\caption{Iterative Policy Evaluation Algorithm}
+\begin{algorithmic}[1]
+\Require $\pi$, the policy to be evaluated
+\State Initilize $V(s) = 0$, for all $s \in \mathcal S^+$
+\Repeat
+\ForEach {$s \in \mathcal S $}
+\State $v \gets V(s)$
+\State $V(s) \gets \sum_a \pi(s,a) \sum_{s'} \mathcal P_{ss'}^a [ \mathcal R_{ss'}^a + \gamma V(s')$
+\State $\Delta \gets \max(\Delta, |v- V(s)|)$
+\EndFor
+\Until {$\Delta < \theta \text{ (a small positive number)}$}
+\Ensure $V \approx V^\pi$
+\end{algorithmic}
+\end{algorithm}
 
 \end{document}
 

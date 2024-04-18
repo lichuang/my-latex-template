@@ -107,7 +107,13 @@
 
 \if@CODEDUMPNOTE@code
     \RequirePackage{listings}
+    \RequirePackage{algorithm}
+    \RequirePackage[noend]{algpseudocode}
+
+    \algnewcommand\algorithmicforeach{\textbf{for each}}
+    \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ }
 \fi
+
 \if@CODEDUMPNOTE@logic
 %\RequirePackage{prftree} % \prf*
 \RequirePackage{mathpartir} % inferrule
@@ -153,6 +159,13 @@
 \RequirePackage[center,pagestyles]{titlesec}
 \RequirePackage[title,titletoc,header]{appendix}
 
+\ifdefstring{\@CODEDUMPNOTE@mode}{simple}{
+  \definecolor{structurecolor}{RGB}{0,0,0}
+  \definecolor{main}{RGB}{0,0,0}%
+  \definecolor{second}{RGB}{0,0,0}%
+  \definecolor{third}{RGB}{0,0,0}%
+}{\relax}
+
 % ------------------------------------------------------------
 % language settings
 % ------------------------------------------------------------
@@ -160,8 +173,8 @@
   \renewcommand{\contentsname}{目录}
   \renewcommand{\figurename}{图}
   \renewcommand{\tablename}{表}
-  \renewcommand{\partname}{\color{structurecolor}}
-  \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+  %\renewcommand{\partname}{\color{structurecolor}}
+  %\renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
   \renewcommand{\listfigurename}{图片索引}
   \renewcommand{\listtablename}{表格索引}
   \renewcommand{\bibname}{参考文献}
@@ -208,7 +221,7 @@
   \newcommand\figref[1]{\textbf{Figure}~\ref{#1}}
   \newcommand\tabref[1]{\textbf{Table}~\ref{#1}}
   \renewcommand{\chaptername}{Chapter}
-  \renewcommand{\partname}{\color{structurecolor} Part}
+  %\renewcommand{\partname}{\color{structurecolor} Part}
   \newcommand{\authorname}{\textbf{Author: }}
   \newcommand{\institutename}{\textbf{Institute: }}
   \newcommand{\datename}{\textbf{Date: }}
