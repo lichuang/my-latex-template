@@ -65,8 +65,9 @@
 % Package loading
 % ---------------------
 % 基于 book class, 选项一并载入.
-\LoadClass[10pt]{book}
-\usepackage[fontsize=8pt]{fontsize}
+%\LoadClass[8pt,a4paper]{book}
+\LoadClass[10pt,a4paper]{book}
+\usepackage[fontsize=7pt]{fontsize}
 %\LoadClass[a4paper,oneside]{book}
 
 \RequirePackage{fontspec}               % XeLaTeX
