@@ -100,6 +100,9 @@
 % 载入 paralist
 \RequirePackage{paralist}
 
+% 图片加载位置
+\graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
+
 % ------------------------------------------------------------
 % load math\code\logic required packages 
 % ------------------------------------------------------------
@@ -114,6 +117,45 @@
 
     \algnewcommand\algorithmicforeach{\textbf{for each}}
     \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ }
+
+    \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+%% 自定义listings代码样式
+\lstdefinestyle{mystyle}{
+  % Basic design
+  basicstyle=\linespread{1.2}\ttfamily,
+  frame=tb,
+  framesep=5pt,
+  framerule=.5pt,
+  framexleftmargin=10pt,
+  abovecaptionskip=0pt,
+  belowcaptionskip=5pt,
+  aboveskip=5pt,
+  % Code design
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=t,
+  keepspaces=true,
+  % Line numbers
+  numbers=none,
+  numbersep=15pt,
+  xleftmargin=10pt,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  % Code
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  breaklines=true,
+}
+\lstset{style=mystyle}
+\RequirePackage{caption}
+\DeclareCaptionFormat{codecaptionformat}{%
+  \parbox{\textwidth}{\faCode~{#1#2}\hspace{.5em} #3}
+}
+%\captionsetup[lstlisting]{format=codecaptionformat}
 \fi
 
 \if@CODEDUMPNOTE@logic
