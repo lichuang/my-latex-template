@@ -191,6 +191,10 @@
 % ------------------------------------------------------------
 % font options
 % ------------------------------------------------------------
+\usepackage{fontspec,unicode-math}
+\setmainfont{XITS}
+\setmathfont{XITS Math}
+
 \ifcsname kaishu\endcsname
   \newcommand{\citshape}{\kaishu}
 \else
