@@ -123,7 +123,7 @@
 %% 自定义listings代码样式
 \lstdefinestyle{mystyle}{
   % Basic design
-  basicstyle=\linespread{1.2}\ttfamily,
+  basicstyle=\linespread{1.1}\ttfamily,
   frame=tb,
   framesep=5pt,
   framerule=.5pt,
@@ -144,7 +144,7 @@
   firstnumber=1,
   numberfirstline=true,
   % Code
-  tabsize=4,
+  tabsize=2,
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
@@ -191,9 +191,10 @@
 % ------------------------------------------------------------
 % font options
 % ------------------------------------------------------------
-\usepackage{fontspec,unicode-math}
+\usepackage{unicode-math}
 \setmainfont{XITS}
 \setmathfont{XITS Math}
+%\setmathfont{Cambria Math}
 
 \ifcsname kaishu\endcsname
   \newcommand{\citshape}{\kaishu}
