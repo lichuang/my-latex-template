@@ -188,19 +188,7 @@
   {\bywhom{#1}\end{quoting}}
 \fi
 
-% ------------------------------------------------------------
-% font options
-% ------------------------------------------------------------
-\usepackage{unicode-math}
-\setmainfont{XITS}
-\setmathfont{XITS Math}
-%\setmathfont{Cambria Math}
 
-\ifcsname kaishu\endcsname
-  \newcommand{\citshape}{\kaishu}
-\else
-  \newcommand{\citshape}{\itshape}
-\fi
 
 % ------------------------------------------------------------
 % 章节设置
@@ -702,9 +690,19 @@
 % ------------------------------------------------------------
 % font settings
 % ------------------------------------------------------------
+\usepackage{unicode-math}
+\setmainfont{XITS}
+\setmathfont{XITS Math}
+%\setmathfont{Cambria Math}
+
 % 设置 xeCJK 字体及中文数字
-%\setmainfont{TeX Gyre Pagella} % 设置西文衬线字体
 \setsansfont{TeX Gyre Heros}    % 设置西文无衬线字体
+
+\ifcsname kaishu\endcsname
+  \newcommand{\citshape}{\kaishu}
+\else
+  \newcommand{\citshape}{\itshape}
+\fi
 
 % 自用模式: Fandol 字体 + 思源黑体 (Noto Sans CJK SC), 宜留意字体高低差异.
 %\setCJKmainfont[
