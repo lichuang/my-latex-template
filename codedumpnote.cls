@@ -429,41 +429,6 @@
     \end{tikzpicture}
 }{}
 
-% 每章开头的学习提示 (定义为环境)
-\if@CODEDUMPNOTE@traditional
-    \newtcolorbox{wenxintishi}{
-        breakable,
-        enhanced,
-        width = \textwidth,
-        colback = white, colbacktitle = white,
-        colframe = gray!50, boxrule=0.2mm,
-        coltitle = black,
-        fonttitle = \sffamily,
-        attach boxed title to top left = {yshift=-\tcboxedtitleheight/2,  xshift=\tcboxedtitlewidth/4},
-        boxed title style = {boxrule=0pt, colframe=white},
-        before skip = 0.5cm,
-        top = 3mm,
-        bottom = 3mm,
-        title={閱讀提示}
-    }
-\else
-    \newtcolorbox{wenxintishi}{
-        breakable,
-        enhanced,
-        width = \textwidth,
-        colback = white, colbacktitle = white,
-        colframe = gray!50, boxrule=0.2mm,
-        coltitle = black,
-        fonttitle = \sffamily,
-        attach boxed title to top left = {yshift=-\tcboxedtitleheight/2,  xshift=\tcboxedtitlewidth/4},
-        boxed title style = {boxrule=0pt, colframe=white},
-        before skip = 0.5cm,
-        top = 3mm,
-        bottom = 3mm,
-        title={阅读提示}
-    }
-\fi
-
 \AtEndPreamble{
     %\RequirePackage[thmmarks, amsmath, hyperref]{ntheorem}  % 设置定理环境所需
     
@@ -742,19 +707,28 @@
 \setsansfont{TeX Gyre Heros}    % 设置西文无衬线字体
 
 % 自用模式: Fandol 字体 + 思源黑体 (Noto Sans CJK SC), 宜留意字体高低差异.
+%\setCJKmainfont[
+%    BoldFont=FandolSong-Bold.otf,
+%    ItalicFont=FandolKai-Regular.otf
+%]{FandolSong-Regular.otf}
 \setCJKmainfont[
-    BoldFont=FandolSong-Bold.otf,
-    ItalicFont=FandolKai-Regular.otf
-]{FandolSong-Regular.otf}
+    BoldFont={霞鹜文楷},
+    ItalicFont={霞鹜文楷},
+]{霞鹜文楷}
 
+%\setCJKsansfont[
+%    BoldFont=FandolHei-Bold.otf
+%]{FandolHei-Regular.otf}
 \setCJKsansfont[
-    BoldFont=FandolHei-Bold.otf
-]{FandolHei-Regular.otf}
+    BoldFont={霞鹜文楷},
+]{霞鹜文楷}
 
+%\setCJKmonofont[
+%    BoldFont=FandolHei-Bold.otf,
+%]{FandolHei-Regular.otf}
 \setCJKmonofont[
-    BoldFont=FandolHei-Bold.otf,
-]{FandolHei-Regular.otf}
-
+    BoldFont={霞鹜文楷},
+]{霞鹜文楷}
 
 \setCJKfamilyfont{kai}[
     BoldFont=FandolKai-Regular.otf, ItalicFont=FandolKai-Regular.otf
