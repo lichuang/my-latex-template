@@ -121,12 +121,15 @@
     \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
 
 %% 自定义listings代码样式
-\newcommand{\listingsttfamily}{\fontfamily{SourceCodePro}}
-\lstdefinestyle{mystyle}{
+%\renewcommand*\familydefault{\ttdefault} %% Only if the base font of the document is to be typewriter style
+\definecolor{lstgrey}{rgb}{0.95,0.95,0.95}
+\newcommand{\listingsttfamily}{\fontfamily{TeX Gyre Heros}}
+\lstdefinestyle{style@base}{
   % Basic design
-  %basicstyle=\linespread{1.1}\ttfamily,
+  %basicstyle=\linespread{1.1}\tt,
+  backgroundcolor=\color{lstgrey},
   basicstyle=\linespread{1.1}\listingsttfamily,
-  frame=tb,
+  frame=single,
   framesep=5pt,
   framerule=.5pt,
   framexleftmargin=10pt,
@@ -152,12 +155,7 @@
   showtabs=false,
   breaklines=true,
 }
-\lstset{style=mystyle}
-\RequirePackage{caption}
-\DeclareCaptionFormat{codecaptionformat}{%
-  \parbox{\textwidth}{\faCode~{#1#2}\hspace{.5em} #3}
-}
-%\captionsetup[lstlisting]{format=codecaptionformat}
+\lstset{style=style@base}
 \fi
 
 \if@CODEDUMPNOTE@logic
