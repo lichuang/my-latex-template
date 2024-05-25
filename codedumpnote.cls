@@ -713,29 +713,34 @@
   \newcommand{\citshape}{\itshape}
 \fi
 
+% 一般文字使用霞鹜文楷，粗体使用思源黑体
+
 % 自用模式: Fandol 字体 + 思源黑体 (Noto Sans CJK SC), 宜留意字体高低差异.
 %\setCJKmainfont[
 %    BoldFont=FandolSong-Bold.otf,
 %    ItalicFont=FandolKai-Regular.otf
 %]{FandolSong-Regular.otf}
 \setCJKmainfont[
-    BoldFont={霞鹜文楷},
-    ItalicFont={霞鹜文楷},
-]{霞鹜文楷}
+    %BoldFont={LXGWWenKai-Bold},
+    BoldFont={SourceHanSerif-Heavy},
+    %ItalicFont={霞鹜文楷},
+]{LXGWWenKai-Light}
 
 %\setCJKsansfont[
 %    BoldFont=FandolHei-Bold.otf
 %]{FandolHei-Regular.otf}
 \setCJKsansfont[
-    BoldFont={霞鹜文楷},
-]{霞鹜文楷}
+    %BoldFont={LXGWWenKai-Bold},
+    BoldFont={SourceHanSerif-Heavy},
+]{LXGWWenKai-Light}
 
 %\setCJKmonofont[
 %    BoldFont=FandolHei-Bold.otf,
 %]{FandolHei-Regular.otf}
 \setCJKmonofont[
-    BoldFont={霞鹜文楷},
-]{霞鹜文楷}
+    %BoldFont={LXGWWenKai-Bold},
+    BoldFont={SourceHanSerif-Heavy},
+]{LXGWWenKai-Light}
 
 \setCJKfamilyfont{kai}[
     BoldFont=FandolKai-Regular.otf, ItalicFont=FandolKai-Regular.otf
