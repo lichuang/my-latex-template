@@ -121,9 +121,11 @@
     \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
 
 %% 自定义listings代码样式
+\newcommand{\listingsttfamily}{\fontfamily{SourceCodePro}}
 \lstdefinestyle{mystyle}{
   % Basic design
-  basicstyle=\linespread{1.1}\ttfamily,
+  %basicstyle=\linespread{1.1}\ttfamily,
+  basicstyle=\linespread{1.1}\listingsttfamily,
   frame=tb,
   framesep=5pt,
   framerule=.5pt,
