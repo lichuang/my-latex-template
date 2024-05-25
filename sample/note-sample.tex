@@ -199,6 +199,15 @@ class Solution:
 \end{lstlisting}
 \end{figure}
 
+\begin{lstlisting}[language=SQL,caption={优化后的依赖连接示例}]
+Q1': select s.name,e.course
+	 from students s,exams e, 
+	 	  (select e2.sid as id, min(e2.grade) as best 
+	 	  from exams e2 
+	 	  group by e2.sid) m
+	 where s.id=e.sid and m.id=s.id and e.grade=m.best
+\end{lstlisting}
+
 \chapter{算法}
 
 \section{算法效果}
