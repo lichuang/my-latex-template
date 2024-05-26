@@ -701,8 +701,8 @@
 % ------------------------------------------------------------
 \usepackage{unicode-math}
 \setmainfont{XITS}
-\setmathfont{XITS Math}
-%\setmathfont{Cambria Math}
+%\setmathfont{XITS Math}
+\setmathfont{Cambria Math}
 
 % 设置 xeCJK 字体及中文数字
 \setsansfont{TeX Gyre Heros}    % 设置西文无衬线字体
