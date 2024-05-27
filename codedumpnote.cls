@@ -244,6 +244,7 @@
   \newcommand{\propositionname}{命题}
   \newcommand{\corollaryname}{推论}
   \newcommand{\examplename}{例题} %
+  \newcommand{\samplename}{例} %
   \newcommand{\instancename}{示例} %
   \newcommand{\problemname}{问题} % 问题
   \newcommand{\exercisename}{练习} % 练习=习题
@@ -283,6 +284,7 @@
   \newcommand{\propositionname}{Proposition}
   \newcommand{\corollaryname}{Corollary}
   \newcommand{\examplename}{Example}
+  \newcommand{\samplename}{Sample} %
   \newcommand{\exercisename}{Exercise}
   \newcommand{\remarkname}{Remark}
   \newcommand{\assumptionname}{Assumption}
@@ -643,6 +645,11 @@
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
   \par\noindent\textbf{{\examplename} \theexam #1 }\rmfamily}{
+  \par\ignorespacesafterend $\square$}
+
+%% Sample without counter
+\newenvironment{sample}[1][]{
+  \par\noindent\textbf{{\samplename} #1 }\rmfamily}{
   \par\ignorespacesafterend $\square$}
 
 %% Exercise with counter
