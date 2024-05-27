@@ -643,7 +643,7 @@
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
   \par\noindent\textbf{{\examplename} \theexam #1 }\rmfamily}{
-  \par\ignorespacesafterend}
+  \par\ignorespacesafterend $\square$}
 
 %% Exercise with counter
 \newcounter{exer}[chapter]
