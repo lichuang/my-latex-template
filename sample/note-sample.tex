@@ -2,6 +2,7 @@
 
 %\usepackage{newtx}
 
+
 \DeclareFontEncoding{LS1}{}{}
 \DeclareFontSubstitution{LS1}{stix2}{m}{n}
 
@@ -23,10 +24,11 @@
 	
 	\mainmatter		% 正文开始：逐章引入 TeX 代码
 
+	
 \part{文本类}
 \chapter{文本类}
 
-\begin{pquotation}{Dijkstra}
+\begin{pquotation}{Dijkstra}\index{Dijkstra}
 “我现在年纪大了, 搞了这么多年软件, 错误不知犯了多少, 现在觉悟了。我想, 假设我早年要是在数理逻辑上好好的下点功夫的话, 我就不会犯这么多的错误。不少东西逻辑学家早就说了, 可我不知道。要是我能年轻20岁的话就要回去学逻辑。’我看这是经验之谈, 说明搞技术没有理论指导是不行的, 而我们研究思维科学要从哲学的逻辑学吸收营养。”
 \end{pquotation}
 
@@ -60,7 +62,7 @@ $$
 
 我们将通过三个步骤定义可测函数的积分。首先定义非负简单函数的积分。以下设 $E$ 是 $\mathcal{R}^n$ 中的可测集。
 
-\begin{definition}[可积性] \label{def:int} 
+\begin{definition}[可积性] \label{def:int}
 设 $ f(x)=\sum\limits_{i=1}^{k} a_i \chi_{A_i}(x)$ 是 $E$ 上的\textbf{非负简单函数}，中文其中 $\{A_1,A_2,\ldots,A_k\}$ 是 $E$ 上的一个可测分割，$a_1,a_2,\ldots,a_k$ 是非负实数。定义 $f$ 在 $E$ 上的积分为 $\int_{a}^b f(x)$
 \begin{equation}
    \label{inter}
@@ -150,17 +152,17 @@ function multiply(x, y)
 Input: Positive integers x and y, in binary
 Output: Their product
 
-n = max(size of x, size of y) 
-if n = 1: return xy
+	n = max(size of x, size of y) 
+	if n = 1: return xy
 
-(*$x_L,x_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: x$*)
-(*$y_L,y_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: y$*)
+	(*$\symrm{x_L,x_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: x}$*)
+	(*$\symrm{y_L,y_R = leftmost \lceil n/2 \rceil , rightmost \lceil n/2 \rceil \: bits \: of \: y}$*)
 
-(*$P_1 = multiply(x_L,y_L)$*)
-(*$P_2 = multiply(x_R,y_R)$*)
-(*$P_3 = multiply(x_L+x_R,y_L+y_R)$*)
+	(*$\symrm{P_1 = multiply(x_L,y_L)}$*)
+	(*$\symrm{P_2 = multiply(x_R,y_R)}$*)
+	(*$\symrm{P_3 = multiply(x_L+x_R,y_L+y_R)}$*)
 
-(*$return \: P_1 \times 2^n + (P_3 - P_1 - P_2 ) \times 2^{n/2} + P_2$*)
+	(*$\symrm{return \: P_1 \times 2^n + (P_3 - P_1 - P_2 ) \times 2^{n/2} + P_2}$*)
 \end{lstlisting}
 
 \begin{figure}[htp]
@@ -278,5 +280,7 @@ Q1': select s.name,e.course
 \end{algorithmic}
 \end{algorithm}
 
+
 \end{document}
+
 

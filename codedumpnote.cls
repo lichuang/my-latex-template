@@ -127,13 +127,13 @@
 \definecolor{lstgrey}{rgb}{0.95,0.95,0.95}
 \definecolor{Decorators}{rgb}{0.7,0,0.7}
 \definecolor{Keywords}{rgb}{0,0,1}
-%\newcommand{\listingsttfamily}{\fontfamily{TeX Gyre Heros}}
+\newcommand{\listingsttfamily}{\fontfamily{Cambria Math}}
 \lstdefinestyle{style@base}{
   % Basic design
   %basicstyle=\linespread{1.1}\tt,
   backgroundcolor=\color{lstgrey},
-  %basicstyle=\linespread{1.1}\listingsttfamily,
-  basicstyle=\linespread{1.1}\ttfamily,
+  basicstyle=\linespread{1.1}\listingsttfamily,
+  %basicstyle=\linespread{1.1}\ttfamily,
   frame=single,
   framesep=5pt,
   framerule=.5pt,
@@ -729,8 +729,8 @@
 %]{FandolSong-Regular.otf}
 \setCJKmainfont[
     %BoldFont={LXGWWenKai-Bold},
-    BoldFont={SourceHanSerif-Heavy},
-    %ItalicFont={霞鹜文楷},
+    %BoldFont={SourceHanSerif-Heavy},
+    BoldFont={FandolSong-Bold},
 ]{LXGWWenKai-Regular}
 
 %\setCJKsansfont[
