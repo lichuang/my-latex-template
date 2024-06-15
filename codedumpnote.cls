@@ -118,7 +118,8 @@
     \algnewcommand\algorithmicforeach{\textbf{for each}}
     \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ }
 
-    \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+    %\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+    \algnewcommand{\LineComment}[1]{\Statex \textbf{//}\,  #1}
 
 %% 自定义listings代码样式
 %\renewcommand*\familydefault{\ttdefault} %% Only if the base font of the document is to be typewriter style
