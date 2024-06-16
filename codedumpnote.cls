@@ -11,7 +11,7 @@
 % Identification
 % --------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{CODEDUMPNOTE}[2024/04/04 ]
+\ProvidesClass{codedumpnote}[2024/04/04 ]
 
 
 
