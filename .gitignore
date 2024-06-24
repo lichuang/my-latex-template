@@ -1,4 +1,5 @@
 sample/.texpadtmp/*
+.texpadtmp
 .DS_Store
 *.aux
 *.bcf
