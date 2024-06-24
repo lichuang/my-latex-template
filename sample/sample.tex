@@ -2,6 +2,11 @@
 
 %\usepackage{newtx}
 
+\usepackage{mathtools}
+%\mathtoolsset{centercolon}
+\usepackage{colonequals}
+\usepackage{mdframed}
+\usepackage{subcaption,booktabs} % subtable
 
 \DeclareFontEncoding{LS1}{}{}
 \DeclareFontSubstitution{LS1}{stix2}{m}{n}
@@ -25,14 +30,14 @@
 	\mainmatter		% 正文开始：逐章引入 TeX 代码
 
 	
-\part{文本类}
+
 \chapter{文本类}
 
 \begin{pquotation}{Dijkstra}\index{Dijkstra}
 “我现在年纪大了, 搞了这么多年软件, 错误不知犯了多少, 现在觉悟了。我想, 假设我早年要是在数理逻辑上好好的下点功夫的话, 我就不会犯这么多的错误。不少东西逻辑学家早就说了, 可我不知道。要是我能年轻20岁的话就要回去学逻辑。’我看这是经验之谈, 说明搞技术没有理论指导是不行的, 而我们研究思维科学要从哲学的逻辑学吸收营养。”
 \end{pquotation}
 
-\part{数学类}
+
 \chapter{数学字体}
 
 $$
@@ -143,7 +148,173 @@ $$
 \end{equation}
 \end{definition}
 
-\part{代码类}
+\chapter{图片表格类}
+\section{多图片排列}
+\begin{figure}[H]
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\begin{tikzpicture}[thick,set/.style = {circle,minimum size = 3cm}]
+ 
+% Set A
+\node[set,label={135:$A$}] (A) at (0.8,1) {};
+ 
+% Set B
+\node[set,label={45:$B$}] (B) at (1.1,1) {};
+ 
+% Intersection
+\begin{scope}
+    \clip (0,0) circle(1.8cm);
+    \clip (1.8,0) circle(1.8cm);
+    \fill[green](0,0) circle(1.8cm);
+\end{scope}
+ 
+% Circles outline
+\draw (0,0) circle(1.8cm);
+\draw (1.8,0) circle(1.8cm);
+ 
+% Set intersection label
+\node at (0.9,0) {内连接};
+\end{tikzpicture}
+\label{pic:inner_join}
+\caption{内连接}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\begin{tikzpicture}[thick,set/.style = {circle,minimum size = 3cm}]
+ 
+% Set A
+\node[set,label={135:$A$}] (A) at (0.8,1) {};
+ 
+% Set B
+\node[set,label={45:$B$}] (B) at (1.1,1) {};
+ 
+% Intersection
+\begin{scope}
+    \clip (0,0) circle(1.8cm);
+    \clip (1.8,0) circle(1.8cm);
+\end{scope}
+ 
+% Circles outline
+\draw (0,0) [fill=green]circle(1.8cm);
+\draw (1.8,0) circle(1.8cm);
+ 
+% Set intersection label
+\node at (0.9,0) {左连接};
+\end{tikzpicture}
+\label{pic:left_join}
+\caption{左连接}
+\end{minipage}
+\\
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\begin{tikzpicture}[thick,set/.style = {circle,minimum size = 3cm}]
+ 
+% Set A
+\node[set,label={135:$A$}] (A) at (0.8,1) {};
+ 
+% Set B
+\node[set,label={45:$B$}] (B) at (1.1,1) {};
+ 
+% Intersection
+\begin{scope}
+    \clip (0,0) circle(1.8cm);
+    \clip (1.8,0) circle(1.8cm);
+\end{scope}
+ 
+% Circles outline
+\draw (1.8,0) [fill=green] circle(1.8cm);
+\draw (0,0) circle(1.8cm);
+
+% Set intersection label
+\node at (0.9,0) {右连接};
+\end{tikzpicture}
+\label{pic:right_join}
+\caption{右连接}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\centering
+\begin{tikzpicture}[thick,set/.style = {circle,minimum size = 3cm}]
+ 
+% Set A
+\node[set,label={135:$A$}] (A) at (0.8,1) {};
+ 
+% Set B
+\node[set,label={45:$B$}] (B) at (1.1,1) {};
+ 
+% Intersection
+\begin{scope}
+    \clip (0,0) circle(1.8cm);
+    \clip (1.8,0) circle(1.8cm);
+\end{scope}
+ 
+% Circles outline
+\draw (1.8,0)[fill=green] circle(1.8cm);
+\draw (0,0)  [fill=green] circle(1.8cm);
+\draw (1.8,0) circle(1.8cm);
+
+% Set intersection label
+\node at (0.9,0) {全连接};
+\end{tikzpicture}
+\label{pic:full_join}
+\caption{全连接}
+\end{minipage}
+\label{pic:join}
+\caption{连接的四种类型}
+\end{figure}
+
+
+\section{mdframed}
+\begin{figure}[H]
+\caption{\textup{record}新增规则}
+\textup{record}语法形式：
+\begin{mdframed}[leftline=false,rightline=false,align=center]
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft}
+\begin{align*}
+	\symrm{t \coloncolonequals} & \cdots \ &\textup{terms:}\\
+	&\colorbox{gray!20}{$\symrm{\{l_i = t^{i \in 1 \cdots n}\}}$} \ &\textup{record} \\
+	&\colorbox{gray!20}{$\symrm{t.l}$} \ &\textup{projection} \\
+\end{align*}
+\end{flushleft}
+\end{minipage}
+\ \ \vline \ \
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft}
+\begin{align*}
+	\colorbox{gray!20}{$\symrm{v \coloncolonequals}$} & \cdots \ &\textup{values:}\\
+	&\colorbox{gray!20}{$\symrm{\{l_i = v_i^{i \in 1 \cdots n}\}}$} \ &\textup{record value} \\
+	\\
+	\colorbox{gray!20}{$\symrm{T \coloncolonequals}$} & \cdots \ &\textup{types:}\\
+	&\colorbox{gray!20}{$\symrm{\{l_i : T_i^{i \in 1 \cdots n}\}}$} \ &\textup{type of record} \\	
+\end{align*}
+\end{flushleft}
+\end{minipage}
+\ \\
+\hrule
+\ \\
+\ \\
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft}
+\textup{record}执行规则 \fbox{$\symrm{t \rightarrow t_1^{'}}$}：
+\begin{align*}
+    \colorbox{gray!20}{$\symrm{\{l_i = v_j^{i \in 1 \cdots n}\}.j \rightarrow v_j}$} & \tag{E-ProjRcd} \\
+	\colorbox{gray!20}{$\symrm{\inferrule{t_1 \rightarrow t_1^{'}}{t_1.l \rightarrow t_1^{'}.l}}$} & \tag{E-Proj} \\
+	\colorbox{gray!20}{$\symrm{\inferrule{t_j \rightarrow t_j^{'}}{\{l_i = v_i^{i \in 1\cdots j-1}, j_j=t_j, l_k=t_k^{k \in j+1,\cdots n}\} \\ \rightarrow \{l_i = v_i^{i \in 1\cdots j-1}, j_j=t_j^{'}, l_k=t_k^{k \in j+1,\cdots n}\}}}$} & \tag{E-Rcd}
+\end{align*}
+\end{flushleft}
+\end{minipage}
+\ \ \vline \ \
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft}
+\textup{record}类型规则 \fbox{$\symrm{\Gamma \vdash t \colon T}$}：
+\begin{align*}
+\colorbox{gray!20}{$\symrm{\inferrule{for \ each \ i \ \Gamma \vdash t_i:T_i}{\Gamma \vdash \{l_i=t_i^{i \in 1 \cdots n}\} : \{l_i:T_i^{i \in 1 \cdots n}\}}}$} \tag{T-Rcd} \\
+\colorbox{gray!20}{$\symrm{\inferrule{\Gamma \vdash t_1 : \{l_i:T_i^{i \in 1 \cdots n}\}}{\Gamma \vdash t_1.l_i : T_j}}$} \tag{T-Proj}
+\end{align*}
+\end{flushleft}
+\end{minipage}
+\end{mdframed}
+\end{figure}
 
 
 \chapter{代码}
