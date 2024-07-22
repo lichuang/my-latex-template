@@ -128,7 +128,9 @@
 \definecolor{lstgrey}{rgb}{0.95,0.95,0.95}
 \definecolor{Decorators}{rgb}{0.7,0,0.7}
 \definecolor{Keywords}{rgb}{0,0,1}
-\newcommand{\listingsttfamily}{\fontfamily{Cambria Math}}
+%\newcommand{\listingsttfamily}{\fontfamily{Cambria Math}}
+%\newcommand{\listingsttfamily}{\fontfamily{Source Code Pro}}
+\newcommand{\listingsttfamily}{\fontfamily{Fira Code}}
 \lstdefinestyle{style@base}{
   % Basic design
   %basicstyle=\linespread{1.1}\tt,
