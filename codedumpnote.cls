@@ -62,6 +62,16 @@
 \ProcessKeyvalOptions*
 \relax
 
+\RequirePackage{enumerate}
+% list/itemize/enumerate setting
+\RequirePackage[shortlabels,inline]{enumitem}
+\setlist{nolistsep}
+\setlist{noitemizesep}
+\setlist{noenumeratesep}
+%\setlist[enumerate]{itemsep=2pt,topsep=0pt,parsep=0pt}
+%\setlist[itemize]{itemsep=1pt,topsep=0pt,parsep=0pt,parskip=0pt}
+%\setlist[list]{itemsep=2pt,topsep=0pt,parsep=0pt}
+
 % Package loading
 % ---------------------
 % 基于 book class, 选项一并载入.
@@ -129,8 +139,8 @@
 \definecolor{Decorators}{rgb}{0.7,0,0.7}
 \definecolor{Keywords}{rgb}{0,0,1}
 %\newcommand{\listingsttfamily}{\fontfamily{Cambria Math}}
-%\newcommand{\listingsttfamily}{\fontfamily{Source Code Pro}}
-\newcommand{\listingsttfamily}{\fontfamily{Fira Code}}
+\newcommand{\listingsttfamily}{\fontfamily{Source Code Pro}}
+%\newcommand{\listingsttfamily}{\fontfamily{Fira Code}}
 \lstdefinestyle{style@base}{
   % Basic design
   %basicstyle=\linespread{1.1}\tt,
