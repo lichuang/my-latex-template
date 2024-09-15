@@ -698,6 +698,12 @@
         title={注}
     }
 
+\newtcolorbox{boxtext}[1][]{
+  enhanced,
+  breakable,
+  #1
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AtBeginDocument{
