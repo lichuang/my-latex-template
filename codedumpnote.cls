@@ -704,6 +704,13 @@
   #1
 }
 
+\newtcolorbox{boxtextwithtitle}[2][]{
+  enhanced,
+  breakable,
+  fonttitle=\scshape,
+  title={#2},
+  #1
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AtBeginDocument{
