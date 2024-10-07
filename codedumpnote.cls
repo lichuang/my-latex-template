@@ -118,6 +118,13 @@
     \algnewcommand\algorithmicforeach{\textbf{for each}}
     \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ }
 
+    \algrenewcommand\textproc{}
+
+    \newdimen{\algindent}
+    \algnewcommand\LeftComment[2]{%
+    \hspace{#1\algindent}\textbf{//} {#2} \hfill %
+    }
+
     %\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
     \algnewcommand{\LineComment}[1]{\Statex \textbf{//}\,  #1}
 
