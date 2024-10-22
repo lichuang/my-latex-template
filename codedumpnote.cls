@@ -729,10 +729,21 @@
 % ------------------------------------------------------------
 % font settings
 % ------------------------------------------------------------
-\usepackage{unicode-math}
+%\usepackage{unicode-math}
+\usepackage[math-style=upright]{unicode-math} 
 \setmainfont{XITS}
 %\setmathfont{XITS Math}
-\setmathfont{Cambria Math}
+%\setmathfont{Cambria Math}
+%\setmathfont[AutoFakeBold]{Libertinus Math}
+
+%\usepackage{mathtools}
+%\usepackage[math-style=ISO]{unicode-math}
+
+\setmathfont{XITS Math}
+%\setmathfont{Asana Math}
+%\setmathfont{STIX Two Math}
+%\setmathfont{Latin Modern Math}
+
 
 % 设置 xeCJK 字体及中文数字
 \setsansfont{TeX Gyre Heros}    % 设置西文无衬线字体
