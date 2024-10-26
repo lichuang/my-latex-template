@@ -732,7 +732,7 @@
 %\usepackage{unicode-math}
 \usepackage[math-style=upright]{unicode-math} 
 \setmainfont{XITS}
-%\setmathfont{XITS Math}
+\setmathfont{XITS Math}
 %\setmathfont{Cambria Math}
 %\setmathfont[AutoFakeBold]{Libertinus Math}
 
@@ -741,7 +741,7 @@
 
 %\setmathfont{XITS Math}
 %\setmathfont{Euler Math}
-\setmathfont{Concrete Math}
+%\setmathfont{Concrete Math}
 %\setmathfont{TeX Gyre Pagella Math}
 %\setmathfont{Asana Math}
 %\setmathfont{STIX Two Math}
