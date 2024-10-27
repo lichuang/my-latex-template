@@ -191,23 +191,21 @@
 \fi
 
 \if@CODEDUMPNOTE@quote
-\usepackage{quoting,xparse}
-
-\NewDocumentCommand{\bywhom}{m}{% the Bourbaki trick
-  {\nobreak\hfill\penalty50\hskip1em\null\nobreak
-   \hfill\mbox{\normalfont(#1)}%
-   \parfillskip=0pt \finalhyphendemerits=0 \par}%
+\newtcolorbox{quote-title}[2][]{%
+    grow to right by=-5mm,
+    grow to left by=-5mm, 
+    boxrule=0pt,
+    boxsep=0pt,
+    breakable,
+    enhanced jigsaw,
+    borderline west={2pt}{0pt}{gray},
+    title={#2\par},
+    colbacktitle={gray},
+    coltitle={black},
+    fonttitle={\large\bfseries},
+    attach title to upper={},
+    #1,
 }
-
-\NewDocumentEnvironment{pquotation}{m}
-  {\begin{quoting}[
-     indentfirst=true,
-     leftmargin=\parindent,
-     rightmargin=\parindent]\itshape}
-  {\bywhom{#1}\end{quoting}}
-\fi
-
-
 
 % ------------------------------------------------------------
 % 章节设置
