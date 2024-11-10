@@ -206,6 +206,20 @@
     attach title to upper={},
     #1,
 }
+\newtcolorbox{quote-text}[1][]{%
+    grow to right by=-5mm,
+    grow to left by=-5mm, 
+    boxrule=0pt,
+    boxsep=0pt,
+    breakable,
+    enhanced jigsaw,
+    borderline west={2pt}{0pt}{gray},
+    colbacktitle={gray},
+    coltitle={black},
+    fonttitle={\large\bfseries},
+    attach title to upper={},
+    #1,
+}
 \fi
 
 % ------------------------------------------------------------
