@@ -1215,7 +1215,7 @@
     before skip = 0.5cm,
     top = 3mm,
     bottom = 3mm,
-    title={\remarkname}
+    title={\color{second}\remarkname}
 }
 
 \RequirePackage{multicol}
