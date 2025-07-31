@@ -882,7 +882,7 @@
     before skip = 0.5cm,
     top = 3mm,
     bottom = 3mm,
-    title={\color{second}\remarkname \ \faLightbulb[regular]}
+    title={\color{second} \faLightbulb[regular]}
 }
 
 \RequirePackage{multicol}
